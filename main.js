@@ -37,8 +37,8 @@ const plane = new THREE.Mesh(geometry, material);
 scene.add(plane);
 
 // Add random black pixels
-let numPixels = 10; // Adjust the number of black pixels as needed
-let pixelSize = 10; // Adjust the pixel size as needed
+let numPixels = 1000; // Adjust the number of black pixels as needed
+let pixelSize = 5; // Adjust the pixel size as needed
 let blackPixels;
 
 // Function to create or update black pixels
