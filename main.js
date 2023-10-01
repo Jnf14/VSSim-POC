@@ -27,7 +27,7 @@ document.body.appendChild(stats.dom);
 
 // Load an image texture
 const textureLoader = new THREE.TextureLoader();
-const imageTexture = textureLoader.load("sample.jpg");
+const imageTexture = textureLoader.load("assets/sample.jpg");
 
 // Set up plane
 const geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
