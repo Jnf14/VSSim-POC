@@ -2,7 +2,7 @@
 // import * as THREE from "./node_modules/three/build/three.module.js";
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
 
-import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/7/Stats.js";
+import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js";
 
 // Set up three Scene
 const scene = new THREE.Scene();
