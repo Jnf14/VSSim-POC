@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "npx vite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "three": "^0.156.1"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9",
+    "gh-pages": "^6.0.0"
+  }
+}
