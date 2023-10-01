@@ -1,15 +1,18 @@
 {
+  "name": "vssim---test-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
   "scripts": {
-    "dev": "npx vite",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d dist"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "stats.js": "^0.17.0",
-    "three": "^0.156.1"
+    "three": "^0.157.0"
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0",
     "vite": "^4.4.9"
   }
 }
