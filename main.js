@@ -2,7 +2,7 @@
 // import * as THREE from "./node_modules/three/build/three.module.js";
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
 
-import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js";
+import Stats from "three/examples/jsm/libs/stats.module";
 
 // Set up three Scene
 const scene = new THREE.Scene();
@@ -25,7 +25,6 @@ document.body.appendChild(renderer.domElement);
 
 // Set up stats box
 const stats = new Stats();
-stats.domElement.style.cssText = "position:absolute;align:right;";
 document.body.appendChild(stats.dom);
 
 // Load an image texture
