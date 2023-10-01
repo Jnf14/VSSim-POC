@@ -1,5 +1,3 @@
-// main.js
-// import * as THREE from "./node_modules/three/build/three.module.js";
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
 import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js";
 
@@ -39,6 +37,7 @@ scene.add(plane);
 // Add random black pixels
 let numPixels = 1000; // Adjust the number of black pixels as needed
 let pixelSize = 5; // Adjust the pixel size as needed
+let pixelOpacity = 1;
 let blackPixels;
 
 // Function to create or update black pixels
@@ -67,6 +66,8 @@ function createOrUpdateBlackPixels() {
   const pixelMaterial = new THREE.PointsMaterial({
     size: pixelSize,
     color: 0x000000,
+    opacity: pixelOpacity,
+    transparent: true,
   });
   blackPixels = new THREE.Points(pixelGeometry, pixelMaterial);
   scene.add(blackPixels);
@@ -93,9 +94,16 @@ function updatePixelSize(value) {
   }
 }
 
+// Function to update pixel opacity
+function updatePixelOpacity(value) {
+  pixelOpacity = value;
+  createOrUpdateBlackPixels();
+}
+
 // Event listeners for sliders
 const pixelCountSlider = document.getElementById("pixelCount");
 const pixelSizeSlider = document.getElementById("pixelSize");
+const pixelOpacitySlider = document.getElementById("pixelOpacity");
 
 pixelCountSlider.addEventListener("input", (event) => {
   updatePixelCount(parseInt(event.target.value));
@@ -103,6 +111,10 @@ pixelCountSlider.addEventListener("input", (event) => {
 
 pixelSizeSlider.addEventListener("input", (event) => {
   updatePixelSize(parseInt(event.target.value));
+});
+
+pixelOpacitySlider.addEventListener("input", (event) => {
+  updatePixelOpacity(parseInt(event.target.value) / 100);
 });
 
 // Render / Animate loop
