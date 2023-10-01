@@ -1,5 +1,3 @@
-// main.js
-// import * as THREE from "./node_modules/three/build/three.module.js";
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
 import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js";
 
@@ -7,7 +5,7 @@ import Stats from "https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js";
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-// Set up three Camera
+// Set up three orthographic Camera
 const camera = new THREE.OrthographicCamera(
   window.innerWidth / -2, // left
   window.innerWidth / 2, // right
@@ -30,25 +28,25 @@ document.body.appendChild(stats.dom);
 const textureLoader = new THREE.TextureLoader();
 const imageTexture = textureLoader.load("public/sample.jpg");
 
-// Set up plane
+// Set up plane and add its texture
 const geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
 const material = new THREE.MeshBasicMaterial({ map: imageTexture });
 const plane = new THREE.Mesh(geometry, material);
 scene.add(plane);
 
 // Add random black pixels
-let numPixels = 1000; // Adjust the number of black pixels as needed
-let pixelSize = 5; // Adjust the pixel size as needed
+// Default values
+let numPixels = 1000;
+let pixelSize = 5;
 let blackPixels;
 
-// Function to create or update black pixels
+// Function to create or update black pixels on top of the plane
 function createOrUpdateBlackPixels() {
   if (blackPixels) {
-    // Remove existing black pixels
     scene.remove(blackPixels);
   }
 
-  // Add random black pixels
+  // Choose random position and store it in a 1D array
   const positions = new Float32Array(numPixels * 3);
   for (let i = 0; i < numPixels; i++) {
     const xPos = (Math.random() - 0.5) * window.innerWidth;
@@ -59,15 +57,20 @@ function createOrUpdateBlackPixels() {
     positions[i * 3 + 2] = 0;
   }
 
+  // Construct pixel geometry
   const pixelGeometry = new THREE.BufferGeometry();
   pixelGeometry.setAttribute(
     "position",
     new THREE.BufferAttribute(positions, 3)
   );
+
+  // Construct pixel material (black for now)
   const pixelMaterial = new THREE.PointsMaterial({
     size: pixelSize,
     color: 0x000000,
   });
+
+  // Create and add the black pixels to the scene
   blackPixels = new THREE.Points(pixelGeometry, pixelMaterial);
   scene.add(blackPixels);
 }
@@ -93,14 +96,12 @@ function updatePixelSize(value) {
   }
 }
 
-// Event listeners for sliders
+// Setup event listeners for sliders
 const pixelCountSlider = document.getElementById("pixelCount");
-const pixelSizeSlider = document.getElementById("pixelSize");
-
 pixelCountSlider.addEventListener("input", (event) => {
   updatePixelCount(parseInt(event.target.value));
 });
-
+const pixelSizeSlider = document.getElementById("pixelSize");
 pixelSizeSlider.addEventListener("input", (event) => {
   updatePixelSize(parseInt(event.target.value));
 });
