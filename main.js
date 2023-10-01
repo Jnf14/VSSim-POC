@@ -110,7 +110,6 @@ pixelSizeSlider.addEventListener("input", (event) => {
 function animate() {
   requestAnimationFrame(animate);
 
-  // Update positions in the GPU buffer for animation
   if (blackPixels) {
     // Update positions in the GPU buffer for animation
     const positionsArray = blackPixels.geometry.attributes.position.array;
