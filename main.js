@@ -1,5 +1,6 @@
-import * as THREE from "three";
-import Stats from "three/examples/jsm/libs/stats.module";
+// main.js
+import * as THREE from "./node_modules/three/build/three.module.js";
+import Stats from "./node_modules/three/examples/jsm/libs/stats.module";
 
 // Set up three Scene
 const scene = new THREE.Scene();
